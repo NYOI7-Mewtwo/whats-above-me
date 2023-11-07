@@ -2,18 +2,27 @@ import React from 'react';
 
 const Weather = () => {
 
-    //click handler
+    const handleCLick = (event: any, props : any) => {
+        event.preventDefault();
 
+        const lat : number = props.lat;
+        const long : number = props.long;
 
-  const options = { method: 'GET', headers: { accept: 'application/json' } };
-  fetch(
-    `https://api.tomorrow.io/v4/weather/realtime?location=toronto&apikey=${process.env.WEATHER_API}`,
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
+        const options = { method: 'GET', headers: { accept: 'application/json' } };
+        fetch(
+          `https://api.tomorrow.io/v4/weather/realtime?location=${lat}%2C%20${long}&apikey=${process.env.WEATHER_API}`,
+          options
+        )
+          .then((response) => response.json())
+          //if clouds then render some clouds
+          //if rain, then render some rain
+          //if fog, then render some fog
+          .then((response) => console.log(response))
+          .catch((err) => console.error(err));
 
+    }
+
+ 
 
   return (
   <div>

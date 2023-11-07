@@ -1,11 +1,7 @@
-
+import Form from '../components/Form';
 
 const TopContainer = () => {
-    return (
-        <div>
-            top
-        </div>
-    );
+  return <Form />;
 };
 
 export default TopContainer;
