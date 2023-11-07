@@ -1,19 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { RequestHandler } from 'express';
 
+const airplanesController: any = {};
 
-export const airplanesController: RequestHandler = (req, res, next) => {
-  
-};
+airplanesController.getPlanes = (req: Request, res: Response, next: NextFunction) => {
+  console.log('hit airplane controller')
+  return next()
+}
 
-// interface AirplanesControllerInterface {
-//   getPlanes: (req: Request, res: Response, next: NextFunction) => NextFunction;
-// }
-// const airplanesController: AirplanesControllerInterface = {   
-
-//   getPlanes: (req: Request, res: Response, next: NextFunction) => {
-//     return next();
-//   },
-
-// }
-// export default airplanesController;
+export default airplanesController;
