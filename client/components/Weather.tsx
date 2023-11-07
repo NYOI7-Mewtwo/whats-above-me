@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Weather = () => {
+const Weather = (props : any) => {
 
-    const handleCLick = (event: any, props : any) => {
+    const handleCLick = (event: any) => {
         event.preventDefault();
 
         const lat : number = props.lat;

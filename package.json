@@ -5,7 +5,8 @@
   "main": "./client/main.tsx",
   "scripts": {
     "start": "nodemon server/server.ts",
-    "dev": "concurrently \"webpack-dev-server --open --hot --progress --color \" \"nodemon server/server.ts\""
+    "dev": "concurrently \"webpack-dev-server --open --hot --color \" \"nodemon server/server.ts\"",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.2",
     "@types/react-dom": "^18.2.14",
+    "autoprefixer": "^10.4.16",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
@@ -37,6 +39,7 @@
     "dotenv": "^16.3.1",
     "dotenv-webpack": "^8.0.1",
     "express": "^4.18.2",
+    "mini-css-extract-plugin": "^2.7.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
