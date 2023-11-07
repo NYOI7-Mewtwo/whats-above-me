@@ -4,10 +4,10 @@ const Weather = () => {
 
     //click handler
 
-    
+
   const options = { method: 'GET', headers: { accept: 'application/json' } };
   fetch(
-    'https://api.tomorrow.io/v4/weather/realtime?location=toronto&apikey=LR8WCXpkOMjIiTymXRjL7YgfWypWv2Jd',
+    `https://api.tomorrow.io/v4/weather/realtime?location=toronto&apikey=${process.env.WEATHER_API}`,
     options
   )
     .then((response) => response.json())
