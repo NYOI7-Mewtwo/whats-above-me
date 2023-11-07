@@ -1,13 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
+import { RequestHandler} from 'express';
 
-interface WeatherControllerInterface {
-  getWeather: (req: Request, res: Response, next: NextFunction) => NextFunction;
-}
-
-const weatherController: WeatherControllerInterface = {
-  getWeather: (req: Request, res: Response, next: NextFunction) => {
-    return next();
-  },
+export const weatherController: RequestHandler = (req, res, next) => {
+  console.log('hi')
 };
-
-export default weatherController;

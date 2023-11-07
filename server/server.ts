@@ -19,10 +19,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 /* ROUTERS */
-app.use('/api/airplanes', airplanesRouter);
-app.use('/api/satellites', satellitesRouter);
-app.use('/api/stars', starsRouter);
-app.use('/api/weather', weatherRouter);
+// app.use('/api', (req, res) => {
+//   res.send('hi');
+// })
+app.use('/api/airplanes', (req, res) => {
+  res.send('airplanes');
+});
+// app.use('/api/airplanes', airplanesRouter);
+// app.use('/api/satellites', satellitesRouter);
+// app.use('/api/stars', starsRouter);
+// app.use('/api/weather', weatherRouter);
 
 /* ERROR HANDLING */
 // Page not found error handler

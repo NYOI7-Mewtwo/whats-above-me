@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api/**': {
-        target: 'http:localhost:3000/',
+        target: 'http://localhost:3000/',
         secure: false,
       },
     },
@@ -57,18 +58,13 @@ module.exports = {
         exclude: /node_modules/,
         use: 'ts-loader',
       },
-      {
-        test: /\.css$/i,
-        include: path.resolve(__dirname, 'client'),
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './client/index.html',
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
   resolve: {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],

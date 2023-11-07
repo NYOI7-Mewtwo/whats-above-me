@@ -2,7 +2,7 @@
 
 const Form = () => {
     return (
-        <div>
+        <div className="text-red-500">
             form
         </div>
     );
