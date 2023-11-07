@@ -4,7 +4,6 @@ import BottomContainer from "./containers/BottomContainer";
 const App = () => {
     return (
         <div>
-            <p>hello</p>
             <TopContainer />
             <BottomContainer />
         </div>
