@@ -1,19 +1,37 @@
 import { Request, Response, NextFunction } from 'express';
-import { RequestHandler } from 'express';
+import fetch from 'node-fetch';
 
+const airplanesController: any = {};
 
-export const airplanesController: RequestHandler = (req, res, next) => {
+airplanesController.getPlanes = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const url: string = `https://api.aviationstack.com/v1/flights`;
+
+  const params = {
+    access_key: `080b533612925fe0d9f2c18cd47184a4`,
+  };
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: new URLSearchParams(params).toString()
+  });
+
+  if(!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`)
+  }
+
+  const data = await response.json();
+  console.log('fetch backend');
+  console.log(data);
   
+  
+  console.log('hitting airplane controller!');
+  return next();
 };
-
-// interface AirplanesControllerInterface {
-//   getPlanes: (req: Request, res: Response, next: NextFunction) => NextFunction;
-// }
-// const airplanesController: AirplanesControllerInterface = {   
-
-//   getPlanes: (req: Request, res: Response, next: NextFunction) => {
-//     return next();
-//   },
-
-// }
-// export default airplanesController;
+export default airplanesController;
