@@ -1,9 +1,11 @@
-
+import Weather from "./Weather";
+import Satellites from "./Satellites"
 
 const Form = () => {
     return (
         <div className="text-red-500">
-            form
+            <Weather/>
+            <Satellites/>
         </div>
     );
 };

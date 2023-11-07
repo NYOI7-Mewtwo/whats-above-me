@@ -1,34 +1,52 @@
 import React from 'react';
 
-const Weather = (props : any) => {
+const Weather = (props: any) => {
 
-    const handleCLick = (event: any) => {
-        event.preventDefault();
+  const handleCLick = async (event: any) => {
+    event.preventDefault();
+    console.log("hello");
 
-        const lat : number = props.lat;
-        const long : number = props.long;
+    const lat: number = 42.3478; //props.lat
+    const long: number = -71.0466; //props.long
+    const options = { method: 'GET', headers: { accept: 'application/json' } };
+    const response = await fetch(
+      `https://api.tomorrow.io/v4/weather/realtime?location=${lat}%2C%20${long}&apikey=LR8WCXpkOMjIiTymXRjL7YgfWypWv2Jd`,
+      options
+    )
+    const weatherData = await response.json();
+    console.log(weatherData.data.values.cloudCover);
 
-        const options = { method: 'GET', headers: { accept: 'application/json' } };
-        fetch(
-          `https://api.tomorrow.io/v4/weather/realtime?location=${lat}%2C%20${long}&apikey=${process.env.WEATHER_API}`,
-          options
-        )
-          .then((response) => response.json())
-          //if clouds then render some clouds
-          //if rain, then render some rain
-          //if fog, then render some fog
-          .then((response) => console.log(response))
-          .catch((err) => console.error(err));
-
+    if (weatherData.data.values.cloudCover > 50) {
+      console.log("it is cloudy!")
+    }
+    else if (weatherData.data.values.cloudCover <= 50) {
+      console.log("it is partly cloudy!")
+    }
+    else if (weatherData.data.values.cloudCover <= 10) {
+      console.log("it is pretty sunny!")
+    }
+    else if (weatherData.data.values.rainIntensity > 0) {
+      console.log("it is not raining!")
     }
 
- 
+    else {
+      console.log("weather not avaiable")
+    }
+
+
+
+
+
+  }
+
+
 
   return (
-  <div>
-</div>
+    <div>
+      <button onClick={handleCLick}>Press me to get some Weather Data</button>
+    </div>
 
-);
+  );
 };
 
 export default Weather;
