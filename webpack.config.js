@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Dotenv = require('dotenv-webpack');
+require('dotenv').config()
 
 module.exports = {
   entry: './client/main.tsx',
@@ -85,8 +84,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './client/index.html',
+      apiUrl: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&libraries=places`
     }),
-    new Dotenv(),
   ],
   resolve: {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],
