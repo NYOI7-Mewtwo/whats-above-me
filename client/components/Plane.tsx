@@ -5,7 +5,6 @@ import Modal from './Modal';
 
 const Plane = () => {
   const [planes, setPlanes] = useState<PlaneData[]>([]);
-  
 
   const handleCLick = async () => {
     try {
@@ -17,20 +16,22 @@ const Plane = () => {
 
       const data: PlaneData[] = await response.json();
       console.log('hi', data);
-      await setPlanes(data);
+
+      //filter flights
+      const onAir = data.filter((plane) => plane.alt > 0);
+      console.log('flying', onAir);
+
+      await setPlanes(onAir);
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log('planes', planes);
 
   return (
     <div>
       <div>
         {planes.map((plane, index) => (
           <div key={`plane-${index}`}>
-            <FaPlane />
             <Modal planeData={plane} />
           </div>
         ))}

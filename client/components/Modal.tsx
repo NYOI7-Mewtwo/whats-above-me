@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import { PlaneData } from '../../utils/interface';
-import { ListItem, ListItemText } from '@mui/material';
+import { ListItemText, Button } from '@mui/material';
+import { FaPlane } from 'react-icons/fa';
 
 const Modal = ({ planeData }: { planeData: PlaneData }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -20,14 +20,15 @@ const Modal = ({ planeData }: { planeData: PlaneData }) => {
 
   return (
     <div>
-      <Typography
+      <Button
         aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup='true'
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
       >
-        Hover with a Popover
-      </Typography>
+        <FaPlane />
+      </Button>
+
       <Popover
         id='mouse-over-popover'
         sx={{ pointerEvents: 'none' }}

@@ -5,4 +5,5 @@ export interface PlaneData {
   arr_iata: string;
   dep_iata: string;
   status: string;
+  alt: number;
 }
