@@ -1,10 +1,11 @@
+import { Box } from '@mui/material';
 import Plane from '../components/Plane';
 
 const BottomContainer = () => {
   return (
-    <div>
+    <Box sx={{ border: 2, borderColor: 'red' }}>
       <Plane />
-    </div>
+    </Box>
   );
 };
 
