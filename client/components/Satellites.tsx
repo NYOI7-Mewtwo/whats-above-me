@@ -1,44 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Satellites = (props: any) => {
+interface SatelliteData {
+  name: string;
+  long: number;
+  lat: number;
+}
+
+const Satellites = ({long, lat}: any) => {
+  const [sats, setSats] = useState<SatelliteData[]>([]);
 
   const handleCLick = async (event: any) => {
-
-    // event: any
     event.preventDefault();
-    console.log("hello");
+    try {
+      const response = await fetch('/api/satellites');
 
-    const api_key: any = 'mAYCD9SteNrzSBdJdtQMhG'; // api_key: any
-    const url: any = `https://api.spectator.earth/satellite/?api_key=${api_key}`;
-    const response = await fetch(url);
-    const satData = await response.json();
-    const satArray = [];
-    for (let i = 0; i < satData.features.length; i++) {
-
-      const name = satData.features[i].properties.name;
-      const currSatlong = satData.features[i].geometry.coordinates[0];
-      const currSatlat = satData.features[i].geometry.coordinates[1];
-
-      const dLat = Math.abs(currSatlat - props.lat)
-      const dLon = Math.abs(currSatlong - props.long)
-
-      if (dLat <= 20 && dLon <= 20) {
-        satArray.push({
-          "name": name,
-          "Longitude": currSatlong,
-          "Latitude": currSatlat
-        })
-        console.log(`heres your array`, satArray);
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
       }
-      else {
-        "none found"
+
+      const satData: any = await response.json();
+      const satArray: SatelliteData[] = [];
+
+      for (let i = 0; i < satData.features.length; i++) {
+        const name: string = satData.features[i].properties.name;
+        const currSatlong: number = satData.features[i].geometry.coordinates[0];
+        const currSatlat: number = satData.features[i].geometry.coordinates[1];
+
+        const dLat: number = Math.abs(currSatlat - lat);
+        const dLon: number = Math.abs(currSatlong - long);
+
+        if (dLat <= 20 && dLon <= 20) {
+          satArray.push({
+            name: name,
+            long: currSatlong,
+            lat: currSatlat,
+          });
+        }
       }
+      setSats(satArray);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <div>
-      <button onClick={handleCLick}>Press me to get some Satellite Data</button>
+      <div>
+        {sats.map((sat, index) => (
+          <div key={`sat-${index}`}>
+            <div>Name: {sat.name}</div>
+            <div>Longitude: {sat.long}</div>
+            <div>Latitude: {sat.lat}</div>
+          </div>
+        ))}
+      </div>
+      <button onClick={handleCLick}>Fetch Satellites</button>
     </div>
   );
 };
