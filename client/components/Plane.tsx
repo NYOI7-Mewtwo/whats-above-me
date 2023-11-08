@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FaPlane } from 'react-icons/fa';
 import { PlaneData } from '../../utils/interface';
 import Modal from './Modal';
 
