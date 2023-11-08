@@ -1,0 +1,60 @@
+
+/* BACKGROUND STYLES */
+#main-background-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d3d7f1;
+    height: 100vh;
+}
+
+.custom-shape-divider-top-1699453873 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1699453873 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 260px;
+}
+
+.custom-shape-divider-top-1699453873 .shape-fill {
+    fill: red;
+}
+
+.atmosphere-levels {
+    width: 95vw;
+    height: 16vh;
+}
+
+#troposphere {
+    background-color: #77dcff;
+}
+
+#stratosphere {
+    background-color: #6abcf3; 
+}
+
+#mesosphere {
+    background-color: #5e9ce1; 
+}
+
+#karman-line {
+    background-color: #557bd0;
+}
+
+#thermosphere {
+    background-color: #475bbd;
+}
+
+#exosphere {
+    background-color: #3838ac;
+}
