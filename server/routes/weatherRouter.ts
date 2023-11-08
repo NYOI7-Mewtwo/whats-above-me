@@ -3,7 +3,7 @@ const weatherRouter = express.Router();
 import weatherController from '../controllers/weatherController';
 
 weatherRouter.get('/', weatherController.getWeather, (req, res) => {
-    res.send('hey you hit the WEATHER router!')
+    res.status(200).send(res.locals.weather);
 });
 
 export default weatherRouter;

@@ -1,3 +1,3 @@
-export type Latitude = number | null;
+export type Latitude = number;
 
-export type Longitude = number | null;
+export type Longitude = number;

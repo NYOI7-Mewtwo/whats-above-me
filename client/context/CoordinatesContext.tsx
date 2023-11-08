@@ -23,8 +23,8 @@ export const CoordinatesContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [latitude, setLatitude] = useState<Latitude>(null);
-  const [longitude, setLongitude] = useState<Longitude>(null);
+  const [latitude, setLatitude] = useState<Latitude>(0);
+  const [longitude, setLongitude] = useState<Longitude>(0);
 
   return (
     <CoordinatesContext.Provider
