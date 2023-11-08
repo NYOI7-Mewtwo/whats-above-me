@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid } from '@mui/material'
 import '../assets/Person.png'
+import TopContainer from '../containers/TopContainer';
+import BottomContainer from '../containers/BottomContainer';
 
 const Background = () => {
 
@@ -8,6 +10,8 @@ const Background = () => {
     <div className='background-container'>
       {/* <Grid container className='circle' id='main-background-container' direction='column'> */}
         <Grid item id='exosphere' className='atmosphere-levels circle'>
+          <TopContainer/>
+          <BottomContainer/>
           WHAT'S ABOVE ME?
           6200 miles: Exosphere | renders stars
           <Grid item id='thermosphere' className='atmosphere-levels circle'>440 miles: Thermosphere | renders statellites
