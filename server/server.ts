@@ -10,7 +10,6 @@ import airplanesRouter from './routes/airplanesRouter';
 import satellitesRouter from './routes/satellitesRouter';
 import starsRouter from './routes/starsRouter';
 import weatherRouter from './routes/weatherRouter';
-import airplanesController from './controllers/airplanesController';
 
 const app = express();
 

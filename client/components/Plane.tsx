@@ -1,33 +1,40 @@
 import { useState } from 'react';
 import { FaPlane } from 'react-icons/fa';
+import { PlaneData } from '../../utils/interface';
+import Modal from './Modal';
 
 const Plane = () => {
-  const [planes, setPlanes] = useState([]);
+  const [planes, setPlanes] = useState<PlaneData[]>([]);
+  
 
   const handleCLick = async () => {
-    const url = `https://airlabs.co/api/v9/flights?api_key=6b90ff34-a3ae-45b5-a857-f250ef7f4045&bbox=40.7002,-74.0119,40.8785,-73.9106`;
-
     try {
-      const response = await fetch(url);
+      const response = await fetch('/api/airplanes');
 
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);
       }
 
-      const data = await response.json();
-      setPlanes(data.response);
+      const data: PlaneData[] = await response.json();
+      console.log('hi', data);
+      await setPlanes(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(planes);
+  console.log('planes', planes);
 
   return (
     <div>
-      {planes.map((plane) => {
-        return <FaPlane />;
-      })}
+      <div>
+        {planes.map((plane, index) => (
+          <div key={`plane-${index}`}>
+            <FaPlane />
+            <Modal planeData={plane} />
+          </div>
+        ))}
+      </div>
       <button onClick={handleCLick}>Fetch</button>
     </div>
   );

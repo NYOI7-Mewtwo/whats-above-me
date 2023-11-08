@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import fetch from 'node-fetch';
+import { PlaneData } from '../../utils/interface';
 
 const airplanesController: any = {};
 
@@ -8,30 +8,23 @@ airplanesController.getPlanes = async (
   res: Response,
   next: NextFunction
 ) => {
-  const url: string = `https://api.aviationstack.com/v1/flights`;
+  const url = `https://airlabs.co/api/v9/flights?api_key=6b90ff34-a3ae-45b5-a857-f250ef7f4045&bbox=40.630080,-74.042088,40.746707,-73.577916`;
 
-  const params = {
-    access_key: `080b533612925fe0d9f2c18cd47184a4`,
-  };
+  try {
+    const response = await fetch(url);
 
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: new URLSearchParams(params).toString()
-  });
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+    const data = await response.json();
+    res.locals.planes = data.response;
 
-  if(!response.ok) {
-    throw new Error(`Request failed with status ${response.status}`)
+    console.log(res.locals.planes);
+
+    next();
+  } catch (error) {
+    console.log(error);
   }
-
-  const data = await response.json();
-  console.log('fetch backend');
-  console.log(data);
-  
-  
-  console.log('hitting airplane controller!');
-  return next();
 };
+
 export default airplanesController;
