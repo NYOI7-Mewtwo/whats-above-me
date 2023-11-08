@@ -1,34 +1,66 @@
 import React from 'react';
 
-const Weather = (props : any) => {
 
-    const handleCLick = (event: any) => {
-        event.preventDefault();
 
-        const lat : number = props.lat;
-        const long : number = props.long;
+const Weather = (props: any) => {
 
-        const options = { method: 'GET', headers: { accept: 'application/json' } };
-        fetch(
-          `https://api.tomorrow.io/v4/weather/realtime?location=${lat}%2C%20${long}&apikey=${process.env.WEATHER_API}`,
-          options
-        )
-          .then((response) => response.json())
-          //if clouds then render some clouds
-          //if rain, then render some rain
-          //if fog, then render some fog
-          .then((response) => console.log(response))
-          .catch((err) => console.error(err));
+  const handleCLick = async (event: any) => {
+    event.preventDefault();
+    console.log("hello");
+    try {
 
+      const coordinatesToSend = {
+        lat: props.lat, //42.3478;
+        long: props.long //-71.0466; 
+      }
+
+      const response = await fetch('/api/weather', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Set the appropriate content type
+        },
+        body: JSON.stringify(coordinatesToSend), // Convert data to JSON format
+      });
+      if (!response.ok) {
+        throw new Error('Failed to post data');
+      }
+
+      const weatherData = await response.json();
+      console.log(weatherData.data.values);
+
+      if (weatherData.data.values.cloudCover > 50) {
+        console.log("it is cloudy!")
+      }
+      else if (weatherData.data.values.cloudCover <= 50) {
+        console.log("it is partly cloudy!")
+      }
+      else if (weatherData.data.values.cloudCover <= 10) {
+        console.log("it is pretty sunny!")
+      }
+      else if (weatherData.data.values.rainIntensity > 0) {
+        console.log("it is not raining!")
+      }
+
+      else {
+        console.log("weather not avaiable")
+      }
     }
 
- 
+
+    catch (error) {
+      console.log(error);
+    }
+
+  }
+
+
 
   return (
-  <div>
-</div>
+    <div>
+      <button onClick={handleCLick}>Press me to get some Weather Data</button>
+    </div>
 
-);
+  );
 };
 
 export default Weather;

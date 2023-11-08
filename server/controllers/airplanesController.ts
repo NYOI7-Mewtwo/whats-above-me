@@ -9,14 +9,14 @@ airplanesController.getPlanes = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { latitude, longitude } = req.body;
 
   const newCoordinates = getRadius(latitude, longitude, 10);
   const { lat, lng } = newCoordinates;
 
   const url = `https://airlabs.co/api/v9/flights?api_key=6b90ff34-a3ae-45b5-a857-f250ef7f4045&bbox=${latitude},${longitude},${lat},${lng}`;
-  console.log(url);
+  // console.log(url);
 
   try {
     const response = await fetch(url);

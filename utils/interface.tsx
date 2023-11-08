@@ -7,3 +7,9 @@ export interface PlaneData {
   status: string;
   alt: number;
 }
+
+export interface SatelliteData {
+  name: string;
+  lat: number;
+  lng: number;
+}
