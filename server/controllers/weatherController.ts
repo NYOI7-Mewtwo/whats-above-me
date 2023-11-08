@@ -1,5 +1,10 @@
-import { RequestHandler} from 'express';
+import { Request, Response, NextFunction } from 'express';
 
-export const weatherController: RequestHandler = (req, res, next) => {
-  console.log('hi')
-};
+const weatherController: any = {};
+
+weatherController.getWeather = (req: Request, res: Response, next: NextFunction) => {
+  console.log('hit WEATHER controller')
+  return next()
+}
+
+export default weatherController;
