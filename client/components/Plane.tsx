@@ -1,13 +1,28 @@
 import { useState } from 'react';
 import { PlaneData } from '../../utils/interface';
 import Modal from './Modal';
+import useCoordinates from '../hooks/useCoordinates';
 
 const Plane = () => {
   const [planes, setPlanes] = useState<PlaneData[]>([]);
+  const { latitude, longitude } = useCoordinates();
+
+  console.log('latitude', latitude);
+  console.log('longitude', longitude);
 
   const handleCLick = async () => {
+    const body = {
+      latitude: latitude?.toFixed(4),
+      longitude: longitude?.toFixed(4),
+    };
     try {
-      const response = await fetch('/api/airplanes');
+      const response = await fetch('/api/airplanes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
 
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);
