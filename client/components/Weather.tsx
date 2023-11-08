@@ -6,15 +6,15 @@ const Weather = (props: any) => {
     event.preventDefault();
     console.log("hello");
 
-    const lat: number = 42.3478; //props.lat
-    const long: number = -71.0466; //props.long
+    const lat: number = props.lat //42.3478;
+    const long: number = props.long //-71.0466; 
     const options = { method: 'GET', headers: { accept: 'application/json' } };
     const response = await fetch(
       `https://api.tomorrow.io/v4/weather/realtime?location=${lat}%2C%20${long}&apikey=LR8WCXpkOMjIiTymXRjL7YgfWypWv2Jd`,
       options
     )
     const weatherData = await response.json();
-    console.log(weatherData.data.values.cloudCover);
+    console.log(weatherData.data.values);
 
     if (weatherData.data.values.cloudCover > 50) {
       console.log("it is cloudy!")
@@ -32,11 +32,6 @@ const Weather = (props: any) => {
     else {
       console.log("weather not avaiable")
     }
-
-
-
-
-
   }
 
 
