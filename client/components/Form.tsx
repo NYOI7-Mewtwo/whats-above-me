@@ -1,21 +1,12 @@
-import {
-  Autocomplete,
-  Box,
-  Button,
-  ClickAwayListener,
-  Grid,
-  TextField,
-  Typography,
-} from '@mui/material';
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
-import { useJsApiLoader, useLoadScript } from '@react-google-maps/api';
+import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
+import { ChangeEvent } from 'react';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from 'use-places-autocomplete';
-import useOnclickOutside from 'react-cool-onclickoutside';
 import parse from 'autosuggest-highlight/parse';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import useCoordinates from '../hooks/useCoordinates';
 
 const Form = () => {
   //   const { isLoaded } = useLoadScript({
@@ -23,9 +14,7 @@ const Form = () => {
   //     googleMapsApiKey: 'AIzaSyDfGl5eh7QcT5qfhygufBYu3zOKm5zfJIs',
   //     libraries: ['places'],
   //   });
-
-  const [longitude, setLongitude] = useState('');
-  const [latitude, setLatitude] = useState('');
+  const { setLatitude, setLongitude } = useCoordinates();
 
   const {
     ready,
@@ -47,14 +36,22 @@ const Form = () => {
 
     const results = await getGeocode({ address: description });
     const { lat, lng } = await getLatLng(results[0]);
-    console.log('Coordinates', lat, lng);
+    // console.log('Coordinates', lat, lng);
+    setLatitude(lat);
+    setLongitude(lng);
   };
 
   return (
-    <Box sx={{ border: 2, borderColor: 'blue', display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-      <Typography variant='h3'>
-        What's Above Me?
-      </Typography>
+    <Box
+      sx={{
+        border: 2,
+        borderColor: 'blue',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Typography variant='h3'>What's Above Me?</Typography>
       <Autocomplete
         id='combo-box-form'
         options={data}
@@ -125,45 +122,3 @@ const Form = () => {
 };
 
 export default Form;
-
-//   <div ref={ref}>
-//     <input
-//       value={value}
-//       onChange={handleInput}
-//       disabled={!ready}
-//       placeholder='Where are you going?'
-//     />
-//     {/* We can use the "status" to decide whether we should display the dropdown or not */}
-//     {status === 'OK' && <ul>{renderSuggestions()}</ul>}
-//   </div>
-// {
-//   /* <Box
-// component='form'
-// sx={{
-//   '& > :not(style)': { m: 1, width: '25ch' },
-//   display: 'flex',
-//   justifyContent: 'center',
-// }}
-// noValidate
-// autoComplete='off'
-// onSubmit={handleSubmit}
-// >
-// <TextField
-//   id='longitude'
-//   value={longitude}
-//   label='Longitude'
-//   variant='outlined'
-//   onChange={(event) => setLongitude(event.target.value)}
-// />
-// <TextField
-//   id='latitude'
-//   value={latitude}
-//   label='Latitude'
-//   variant='outlined'
-//   onChange={(event) => setLatitude(event.target.value)}
-// />
-// <Button variant='outlined' type='submit'>
-//   Submit
-// </Button>
-// </Box> */
-// }
