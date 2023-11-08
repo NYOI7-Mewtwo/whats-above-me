@@ -52,7 +52,8 @@ body {
     flex-direction: column;
     background-color: #77dcff;
     height: 25vh;
-    border-radius: 100% 100% 0 0;
+    clip-path: ellipse(15vw 25vh at 50% 0%);
+    /* border-radius: 100% 100% 0 0; */
     width: 20vw;
 }
 
@@ -62,8 +63,15 @@ body {
     justify-content: flex-end;
     background-color: #6abcf3;
     height: 38vh;
-    border-radius: 80% 80% 0 0;
+    /* border-radius: 80% 80% 0 0; */
+    clip-path: ellipse(30vw 40vh at 50% 0%);
     width: 40vw;
+}
+
+#plane-container {
+    display: flex;
+    flex-direction: row;
+    background-color: red;
 }
 
 #mesosphere {
@@ -72,7 +80,8 @@ body {
     justify-content: flex-end;
     background-color: #5e9ce1; 
     height: 48vh;
-    border-radius: 50% 50% 0 0;
+    /* border-radius: 50% 50% 0 0; */
+    clip-path: ellipse(60vw 43vh at 50% 0%);
     width: 60vw;
 }
 
@@ -82,7 +91,8 @@ body {
     justify-content: flex-end;
     background-color: #557bd0;
     height: 60vh;
-    border-radius: 50% 50% 0 0;
+    /* border-radius: 50% 50% 0 0; */
+    clip-path: ellipse(80vw 55vh at 50% 0%);
     width: 80vw;
 }
 
@@ -92,7 +102,8 @@ body {
     justify-content: flex-end;
     background-color: #475bbd;
     height: 75vh;
-    border-radius: 50% 50% 0 0;
+    /* border-radius: 50% 50% 0 0; */
+    clip-path: ellipse(90vw 70vh at 50% 0%);
 }
 
 #exosphere {
@@ -102,5 +113,6 @@ body {
     background-color: #3838ac;
     height: 100vh;
     border-radius: 50% 50% 0 0;
-    /* color: white; */
+    /* clip-path: ellipse(80vw 95vh at 50% 0%); */
+
 }

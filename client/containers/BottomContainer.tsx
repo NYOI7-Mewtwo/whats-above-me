@@ -5,8 +5,8 @@ import Satellites from '../components/Satellites';
 const BottomContainer = () => {
   return (
     <Box >
-      <Plane />
-      <Satellites />
+      {/* <Plane /> */}
+      {/* <Satellites /> */}
     </Box>
   );
 };
