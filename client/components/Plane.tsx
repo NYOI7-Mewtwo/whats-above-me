@@ -42,8 +42,8 @@ const Plane = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div >
+      <div id='plane-container'>
         {planes.map((plane, index) => (
           <div key={`plane-${index}`}>
             <Modal planeData={plane} />

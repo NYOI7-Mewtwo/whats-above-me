@@ -57,6 +57,28 @@ module.exports = {
         exclude: /node_modules/,
         use: 'ts-loader',
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+            // creates style nodes from JS strings - ORDER MATTERS!
+            // these loaders are used in backwards order
+            'style-loader',
+            'css-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'assets/',
+                }
+            }
+        ]
+      },
     ],
   },
   plugins: [
