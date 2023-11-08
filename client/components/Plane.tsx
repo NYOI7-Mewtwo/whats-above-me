@@ -1,36 +1,40 @@
 import { useState } from 'react';
-import { FaPlane } from 'react-icons/fa';
 import { PlaneData } from '../../utils/interface';
+import Modal from './Modal';
 
 const Plane = () => {
   const [planes, setPlanes] = useState<PlaneData[]>([]);
 
   const handleCLick = async () => {
-
-    console.log('button was clicked!')
-
     try {
-      console.log('inside try block, BEFORE fetch request')
       const response = await fetch('/api/airplanes');
 
-      console.log('inside try block, AFTER fetch request ')
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);
       }
-      const data: { response: PlaneData[] } = await response.json();
-      setPlanes(data.response);
+
+      const data: PlaneData[] = await response.json();
+      console.log('hi', data);
+
+      //filter flights
+      const onAir = data.filter((plane) => plane.alt > 0);
+      console.log('flying', onAir);
+
+      await setPlanes(onAir);
     } catch (error) {
       console.log(error);
     }
-
   };
-  console.log('here are your planes', planes);
 
   return (
     <div>
-      {planes.map((plane, index) => {
-        return <FaPlane key={`plane-${index}`} />;
-      })}
+      <div>
+        {planes.map((plane, index) => (
+          <div key={`plane-${index}`}>
+            <Modal planeData={plane} />
+          </div>
+        ))}
+      </div>
       <button onClick={handleCLick}>Fetch</button>
     </div>
   );
