@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 
 const weatherController: any = {};
 
-weatherController.getWeather = (req: Request, res: Response, next: NextFunction) => {
+weatherController.getWeather = async (req: Request, res: Response, next: NextFunction) => {
 
   const { long } = req.body
   const { lat } = req.body

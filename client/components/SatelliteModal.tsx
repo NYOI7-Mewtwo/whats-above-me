@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import Popover from '@mui/material/Popover';
-import { SatData } from '../../utils/interface';
+import { SatelliteData } from '../../utils/interface';
 import { ListItemText, Button } from '@mui/material';
 import { FaSatellite } from 'react-icons/fa';
 
-const SatelliteModal = ({ satData }: { satData: SatData }) => {
+const SatelliteModal = ({ satelliteData }: { satelliteData: SatelliteData }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
     const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
-        console.log(planeData);
+        console.log('satelliteData',satelliteData);
     };
 
     const handlePopoverClose = () => {
@@ -26,7 +26,7 @@ const SatelliteModal = ({ satData }: { satData: SatData }) => {
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
             >
-                <FaPlane />
+                <FaSatellite />
             </Button>
 
             <Popover
@@ -39,10 +39,9 @@ const SatelliteModal = ({ satData }: { satData: SatData }) => {
                 onClose={handlePopoverClose}
                 disableRestoreFocus
             >
-                <ListItemText>Satellite Name: {satData}</ListItemText>
-                <ListItemText>Ground Latitude: {satData}</ListItemText>
-                <ListItemText>Ground Longitude: {satData}</ListItemText>
-                <ListItemText>Country: {satData}</ListItemText>
+                <ListItemText>Satellite Name: {satelliteData.name}</ListItemText>
+                <ListItemText>Satellite Latitude: {satelliteData.lat}</ListItemText>
+                <ListItemText>Satellite Longitude: {satelliteData.lng}</ListItemText>
 
             </Popover>
         </div>

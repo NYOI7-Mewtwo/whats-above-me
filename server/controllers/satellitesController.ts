@@ -4,9 +4,9 @@ const satellitesController: any = {};
 
 satellitesController.getSatellites = async (req: Request, res: Response, next: NextFunction) => {
 
-  const api_key: any = 'mAYCD9SteNrzSBdJdtQMhG';
-  const url: any = `https://api.spectator.earth/satellite/?api_key=${api_key}`;
-
+  const url = `https://api.spectator.earth/satellite/?api_key=mAYCD9SteNrzSBdJdtQMhG`;
+  console.log('im inside get');
+  
   try {
     const response = await fetch(url);
 
@@ -15,7 +15,7 @@ satellitesController.getSatellites = async (req: Request, res: Response, next: N
     }
     const data = await response.json();
     res.locals.satellites = data.response;
-    console.log(res.locals.satellites);
+    console.log('RES LOCALS SATELITTES', res.locals.satellites);
     next();
 
   } catch (error) {
