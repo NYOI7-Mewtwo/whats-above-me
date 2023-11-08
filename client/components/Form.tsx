@@ -14,7 +14,6 @@ const Form = () => {
   //     googleMapsApiKey: 'AIzaSyDfGl5eh7QcT5qfhygufBYu3zOKm5zfJIs',
   //     libraries: ['places'],
   //   });
-
   const { setLatitude, setLongitude } = useCoordinates();
 
   const {
