@@ -1,4 +1,4 @@
-import Form from '../components/DummyForm';
+import Form from '../components/Form';
 
 const TopContainer = () => {
   return <Form />;

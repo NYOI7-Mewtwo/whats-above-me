@@ -7,33 +7,50 @@ const Weather = (props: any) => {
   const handleCLick = async (event: any) => {
     event.preventDefault();
     console.log("hello");
+    try {
 
-    const lat: number = props.lat //42.3478;
-    const long: number = props.long //-71.0466; 
-    const options = { method: 'GET', headers: { accept: 'application/json' } };
-    const response = await fetch(
-      `https://api.tomorrow.io/v4/weather/realtime?location=${lat}%2C%20${long}&apikey=LR8WCXpkOMjIiTymXRjL7YgfWypWv2Jd`,
-      options
-    )
-    const weatherData = await response.json();
-    console.log(weatherData.data.values);
+      const coordinatesToSend = {
+        lat: props.lat, //42.3478;
+        long: props.long //-71.0466; 
+      }
 
-    if (weatherData.data.values.cloudCover > 50) {
-      console.log("it is cloudy!")
-    }
-    else if (weatherData.data.values.cloudCover <= 50) {
-      console.log("it is partly cloudy!")
-    }
-    else if (weatherData.data.values.cloudCover <= 10) {
-      console.log("it is pretty sunny!")
-    }
-    else if (weatherData.data.values.rainIntensity > 0) {
-      console.log("it is not raining!")
+      const response = await fetch('/api/weather', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Set the appropriate content type
+        },
+        body: JSON.stringify(coordinatesToSend), // Convert data to JSON format
+      });
+      if (!response.ok) {
+        throw new Error('Failed to post data');
+      }
+
+      const weatherData = await response.json();
+      console.log(weatherData.data.values);
+
+      if (weatherData.data.values.cloudCover > 50) {
+        console.log("it is cloudy!")
+      }
+      else if (weatherData.data.values.cloudCover <= 50) {
+        console.log("it is partly cloudy!")
+      }
+      else if (weatherData.data.values.cloudCover <= 10) {
+        console.log("it is pretty sunny!")
+      }
+      else if (weatherData.data.values.rainIntensity > 0) {
+        console.log("it is not raining!")
+      }
+
+      else {
+        console.log("weather not avaiable")
+      }
     }
 
-    else {
-      console.log("weather not avaiable")
+
+    catch (error) {
+      console.log(error);
     }
+
   }
 
 

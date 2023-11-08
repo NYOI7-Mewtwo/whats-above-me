@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SatelliteModal './SatelliteModal'
 
 interface SatelliteData {
   name: string;
@@ -6,7 +7,7 @@ interface SatelliteData {
   lat: number;
 }
 
-const Satellites = ({long, lat}: any) => {
+const Satellites = ({ long, lat }: any) => {
   const [sats, setSats] = useState<SatelliteData[]>([]);
 
   const handleCLick = async (event: any) => {
@@ -48,9 +49,7 @@ const Satellites = ({long, lat}: any) => {
       <div>
         {sats.map((sat, index) => (
           <div key={`sat-${index}`}>
-            <div>Name: {sat.name}</div>
-            <div>Longitude: {sat.long}</div>
-            <div>Latitude: {sat.lat}</div>
+            <Modal satData={sat} />
           </div>
         ))}
       </div>
