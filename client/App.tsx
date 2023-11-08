@@ -9,6 +9,7 @@ const App = () => {
             {/* <TopContainer /> */}
             {/* <BottomContainer /> */}
             <Background />
+            {/* <Rainbow/> */}
         </div>
     );
 };

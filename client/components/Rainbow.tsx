@@ -3,6 +3,15 @@ import React from 'react'
 const Rainbow = () => {
   return (
     <div className="custom-shape-divider-top-1699453873">
+        <svg width="300" height="150" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 100 Q50 0 100 100 Z" fill="red" />
+            <path d="M0 100 Q50 0 100 100 Z" fill="orange" transform="translate(0, 20)" />
+            <path d="M0 100 Q50 0 100 100 Z" fill="yellow" transform="translate(0, 40)" />
+            <path d="M0 100 Q50 0 100 100 Z" fill="green" transform="translate(0, 60)" />
+            <path d="M0 100 Q50 0 100 100 Z" fill="blue" transform="translate(0, 80)" />
+            <path d="M0 100 Q50 0 100 100 Z" fill="purple" transform="translate(0, 100)" />
+            {/* Insert React components or HTML content inside the SVG */}
+        </svg>
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" className="shape-fill"></path>
         </svg>
