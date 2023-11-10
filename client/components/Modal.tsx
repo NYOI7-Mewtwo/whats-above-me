@@ -26,7 +26,7 @@ const Modal = ({ planeData }: { planeData: PlaneData }) => {
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
       >
-        <FaPlane />
+        <FaPlane className='icon'/>
       </Button>
 
       <Popover
@@ -38,6 +38,7 @@ const Modal = ({ planeData }: { planeData: PlaneData }) => {
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
         onClose={handlePopoverClose}
         disableRestoreFocus
+
       >
         <ListItemText>Airline: {planeData.airline_iata}</ListItemText>
         <ListItemText>Flight Number: {planeData.flight_number}</ListItemText>

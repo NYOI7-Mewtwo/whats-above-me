@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { PlaneData } from '../../utils/interface';
 import Modal from './Modal';
 import useCoordinates from '../hooks/useCoordinates';
+import { Button } from '@mui/material'
 
 const Plane = () => {
   const [planes, setPlanes] = useState<PlaneData[]>([]);
@@ -50,7 +51,7 @@ const Plane = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleCLick}>Fetch</button>
+      <Button variant='contained' sx={{bgcolor: 'transparent'}}onClick={handleCLick}>Get planes</Button>
     </div>
   );
 };

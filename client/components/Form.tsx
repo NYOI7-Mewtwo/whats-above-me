@@ -51,7 +51,7 @@ const Form = () => {
         alignItems: 'center',
       }}
     >
-      <Typography variant='h3'>What's Above Me?</Typography>
+      <Typography variant='h3' sx={{color: 'black'}}>What's Above Me?</Typography>
       <Autocomplete
         id='combo-box-form'
         options={data}
