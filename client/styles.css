@@ -4,11 +4,15 @@
 body {
     overflow: hidden;
     font-family: 'Urbanist', sans-serif;
+    color: white;
+    font-size: 20px;
+    background-color: #3838ac;
 }
+
 
 /* FORM */
 #form-container {
-    background-color: white;
+    background-color: rgb(230, 230, 255);
     border-radius: 30px;
     padding: 1%;
     width: 30%;
@@ -68,10 +72,9 @@ body {
     width: 40vw;
 }
 
-#plane-container {
+#plane-container, #satellite-container {
     display: flex;
     flex-direction: row;
-    background-color: red;
 }
 
 #mesosphere {
@@ -103,7 +106,8 @@ body {
     background-color: #475bbd;
     height: 75vh;
     /* border-radius: 50% 50% 0 0; */
-    clip-path: ellipse(90vw 70vh at 50% 0%);
+    clip-path: ellipse(80vw 100vh at 50% 0%);
+
 }
 
 #exosphere {
@@ -112,7 +116,12 @@ body {
     justify-content: flex-end;
     background-color: #3838ac;
     height: 100vh;
-    border-radius: 50% 50% 0 0;
-    /* clip-path: ellipse(80vw 95vh at 50% 0%); */
+    clip-path: ellipse(95vw 94vh at 50% 0%);
 
 }
+
+.icon {
+    font-size: 30px;
+    color: white
+}
+

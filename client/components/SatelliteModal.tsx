@@ -26,7 +26,7 @@ const SatelliteModal = ({ satelliteData }: { satelliteData: SatelliteData }) => 
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
             >
-                <FaSatellite />
+                <FaSatellite className='icon'/>
             </Button>
 
             <Popover

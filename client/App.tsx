@@ -7,8 +7,6 @@ const App = () => {
   return (
     <>
       <CoordinatesContextProvider>
-        {/* <TopContainer /> */}
-        {/* <BottomContainer /> */}
         <Background />
       </CoordinatesContextProvider>
     </>

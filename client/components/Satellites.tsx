@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SatelliteData } from '../../utils/interface';
 import SatelliteModal from './SatelliteModal';
 import useCoordinates from '../hooks/useCoordinates';
+import { Button } from '@mui/material'
 
 
 const Satellites = () => {
@@ -30,7 +31,7 @@ const Satellites = () => {
         const dLat: number = Math.abs(currSatlat - latitude);
         const dLon: number = Math.abs(currSatlong - longitude);
 
-        if (dLat <= 20 && dLon <= 20) {
+        if (dLat <= 50 && dLon <= 50) {
           satArray.push({
             name: name,
             lat: currSatlat,
@@ -46,14 +47,14 @@ const Satellites = () => {
 
   return (
     <div>
-      <div>
+      <div id='satellite-container'>
         {sats.map((sat, index) => (
           <div key={`sat-${index}`}>
             <SatelliteModal satelliteData={sat} />
           </div>
         ))}
       </div>
-      <button onClick={handleCLick}>Fetch Satellites</button>
+      <Button variant='contained' onClick={handleCLick}>Get satellites</Button>
     </div>
   );
 };
