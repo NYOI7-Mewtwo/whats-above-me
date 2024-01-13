@@ -26,10 +26,10 @@ Getting Started 🌐
 git clone https://github.com/your-username/whats-above-me.git
 
 - Install dependencies
-npm install
+"npm install"
 
 - Launch the app
-npm start
+"npm start"
 
 # License 📝
 "What's Above Me" is licensed under the MIT License.
