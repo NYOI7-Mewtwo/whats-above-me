@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* BACKGROUND STYLES */
+body {
+    overflow: hidden;
+    font-family: 'Urbanist', sans-serif;
+    color: white;
+    font-size: 20px;
+    background-color: #3838ac;
+}
+
+
+/* FORM */
+#form-container {
+    background-color: rgb(230, 230, 255);
+    border-radius: 30px;
+    padding: 1%;
+    width: 30%;
+}
+
+
+.background-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #3838ac; */
+
+}
+
+.circle {
+    border-radius: 100px 100px 0 0;
+    background-color: #ccc; /* Adjust the background color for the circles as needed */
+    display: flex;
+    text-align: center;
+    align-content: flex-end;
+    width: 200px; /* Adjust the width of the circles as needed */
+}
+
+.atmosphere-levels {
+    width: 100%;
+    padding: 10px 0 0 0; /* Adjust the padding as needed */
+    /* background-color: #ccc; Adjust the background color for the circles as needed */
+    border-radius: 50%;
+    text-align: center;
+    margin: 10px; /* Adjust the margin between circles as needed */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#troposphere {
+    display: flex;
+    flex-direction: column;
+    background-color: #77dcff;
+    height: 25vh;
+    clip-path: ellipse(15vw 25vh at 50% 0%);
+    /* border-radius: 100% 100% 0 0; */
+    width: 20vw;
+}
+
+#stratosphere {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #6abcf3;
+    height: 38vh;
+    /* border-radius: 80% 80% 0 0; */
+    clip-path: ellipse(30vw 40vh at 50% 0%);
+    width: 40vw;
+}
+
+#plane-container, #satellite-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#mesosphere {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #5e9ce1; 
+    height: 48vh;
+    /* border-radius: 50% 50% 0 0; */
+    clip-path: ellipse(60vw 43vh at 50% 0%);
+    width: 60vw;
+}
+
+#karman-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #557bd0;
+    height: 60vh;
+    /* border-radius: 50% 50% 0 0; */
+    clip-path: ellipse(80vw 55vh at 50% 0%);
+    width: 80vw;
+}
+
+#thermosphere {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #475bbd;
+    height: 75vh;
+    /* border-radius: 50% 50% 0 0; */
+    clip-path: ellipse(80vw 100vh at 50% 0%);
+
+}
+
+#exosphere {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #3838ac;
+    height: 100vh;
+    clip-path: ellipse(95vw 94vh at 50% 0%);
+
+}
+
+.icon {
+    font-size: 30px;
+    color: white
+}
+
